@@ -1,5 +1,3 @@
-﻿package org.example.pomodoro;
-
 public class CycleParams {
     private int work = 50;
     private int breake = 10;
