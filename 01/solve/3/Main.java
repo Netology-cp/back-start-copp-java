@@ -1,7 +1,7 @@
 import java.util.Random; // для определения случайного числа
 import java.util.Scanner;
 
-public class Main1 {
+public class Main {
 
     static String[] words = {"javalove", "netology", "developer"};
 
