@@ -1,7 +1,7 @@
 public class CycleParams {
-    private int work = 50;
-    private int breake = 10;
-    private int count = 1;
+    private int work;
+    private int breake;
+    private int count;
 
     public int getWork() {
         return work;
