@@ -1,12 +1,5 @@
-package org.example.first;
-
-import java.util.Random;
+import java.util.Random; // для определения случайного числа
 import java.util.Scanner;
-
-    /*
-        2. Сделать поле word переменной внутри метода main. Чтобы код при этом не поломался, везде, где сейчас
-           word используется, как поле класса, передавать вновь созданную переменную как параметр.
-     */
 
 public class Main1 {
 
@@ -23,45 +16,34 @@ public class Main1 {
 
         String word = chooseWord(words);    // <-- объявили переменную внутри метода main
 
-        // javalove --------
         System.out.println("Угадай слово");
         int lengthWord = word.length();
-        String maskWord = "-".repeat(lengthWord);
+        String maskWord = "-".repeat(lengthWord); // в начале вместо каждой буквы в слове стоит знак «-», если буква будет угдана, то знак поменяется на нужную букву
         System.out.println(maskWord);
 
-        // --------
-        // a
-        // -a-a----
-        // o
-        // -a-a-o--
         do {
-            System.out.println("Введите букву");
+            System.out.println("Введите букву"); // считываем введенный символ
             char c = input.next().charAt(0);
-            // a 2
-            // w -1
-            if (word.indexOf(c) >= 0) {
+
+            if (word.indexOf(c) >= 0) { // проверяем есть ли введенная буква в слове
                 System.out.println("Удача");
-                for (char elem : word.toCharArray()) {
+                for (char elem : word.toCharArray()) { // просматриваем все слово, чтобы заменить «-» на буквы
                     if (elem == c) {
                         maskWord = replaceMaskLetter(c, maskWord, word);             // <-- в этот метод передаем слово дополнительным параметром
                     }
                 }
-                System.out.println(maskWord);
+                System.out.println(maskWord); // выводим обновленное слово с добавленной отгаданной буквой
             } else {
                 System.out.println("Промах, поробуй еще раз");
-                System.out.println(maskWord);
+                System.out.println(maskWord); // если буквы нет, то просто выводим слово с «-» и ранее угаданными буквами
             }
-        } while (maskWord.contains("-"));
+        } while (maskWord.contains("-")); // повторяем действия пока в слове еще будут неотгаданные буквы, то есть будет хотя бы один символ «-»
         System.out.println("Поздравляем ты выйграл");
     }
 
-    /*
-    -a-a---- j
-    ja-a----
-     */
     public static String replaceMaskLetter(char c, String maskWord, String word) {          // <-- в метод добавили дополнительный параметр - слово
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < word.length(); i++) {
+        for (int i = 0; i < word.length(); i++) { // в цикле по порядку перебираем каждую букву из слова
             if (word.charAt(i) == c) {
                 stringBuilder.append(c);
             } else if (maskWord.charAt(i) != '-') {
